@@ -10,12 +10,10 @@ func execute(argv []string) error {
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	if err := cmd.Start(); err != nil {
-		return err
+	cmd.Run()
+	if cmd.ProcessState != nil {
+		os.Exit(cmd.ProcessState.ExitCode())
 	}
-
-	if err := cmd.Wait(); err != nil {
-		return err
-	}
+	os.Exit(-1)
 	return nil
 }

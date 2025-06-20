@@ -6,5 +6,9 @@ import "os"
 import "syscall"
 
 func execute(argv []string) error {
-	return syscall.Exec(argv[0], argv, os.Environ())
+	err := syscall.Exec(argv[0], argv, os.Environ())
+	if err != nil {
+		panic(err)
+	}
+	return err
 }
