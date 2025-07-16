@@ -11,6 +11,10 @@ func execute(argv []string) error {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Run()
+	if cmd.Err != nil {
+		return cmd.Err
+	}
+
 	if cmd.ProcessState != nil {
 		os.Exit(cmd.ProcessState.ExitCode())
 	}

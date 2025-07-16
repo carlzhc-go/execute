@@ -52,5 +52,5 @@ func main() {
 	argv = append(argv, os.Args[1:]...)
 	// fmt.Printf("Command to run: %q\n", argv)
 	runAsRoot()
-	execute(argv)
+	fmt.Println(execute(argv))
 }
